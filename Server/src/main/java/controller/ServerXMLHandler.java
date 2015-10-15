@@ -123,7 +123,7 @@ public class ServerXMLHandler {
         return attributeName;
     }
 
-    public static void addNewBook(String xmlRecords, int position){
+    public static synchronized void addNewBook(String xmlRecords, int position){
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -171,7 +171,7 @@ public class ServerXMLHandler {
 
         Element rootElement = xmlDoc.createElement("library");
         Element mainElement = xmlDoc.createElement("items");
-        Element tempElement = null;
+        Element tempElement;
 
         for (int i = 0; i < serverLibrary.length(); i++) {
             tempElement = xmlDoc.createElement("book");
@@ -204,7 +204,7 @@ public class ServerXMLHandler {
         return sb.toString();
     }
 
-    public static void removeBooks(int[] indecesToRemove) {
+    public static synchronized void removeBooks(int[] indecesToRemove) {
         for (int i = 0; i < indecesToRemove.length; i++) {
             for (int j = 0; j < serverLibrary.length(); j++) {
                 if(serverLibrary.getElement(j).getId() == indecesToRemove[i]) {

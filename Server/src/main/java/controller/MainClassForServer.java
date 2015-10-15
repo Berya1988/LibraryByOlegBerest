@@ -36,7 +36,7 @@ public class MainClassForServer {
         int choice = 0;
         boolean flag = true;
         while(flag){
-            System.out.println("Select option:\n\t1 - download existing library;\n\t2 - create new empty library");
+            System.out.println("Select option:\n\t1 - download temp library;\n\t2 - create new empty library;\n\t3 - download existing library.");
             choice = Integer.parseInt(bf.readLine());
             switch(choice){
                 case 1:
@@ -48,6 +48,11 @@ public class MainClassForServer {
                     break;
                 case 2:
                     ServerXMLHandler.createLibraryArchive();
+                    ServerXMLHandler.parseLibraryArchive();
+                    log.info("New empty library was created.");
+                    flag = !flag;
+                    break;
+                case 3:
                     ServerXMLHandler.parseLibraryArchive();
                     log.info("New empty library was created.");
                     flag = !flag;

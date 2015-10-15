@@ -6,6 +6,7 @@ package view;
 
 import controller.ClientXMLHandler;
 import controller.ConnectModelWithView;
+import org.apache.log4j.Logger;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -28,23 +29,13 @@ import javax.swing.JOptionPane;
  * users connected to the server.
  */
 public class Client {
+    private static final Logger Log = Logger.getLogger(Client.class);
     public static BufferedReader in;
     public static PrintWriter out;
     public JFrame frame;
     public static Socket socket;
     public static String name;
-    public static boolean flagEdit = false;
     public Client() {
-    }
-    /**
-     * Prompt for and return the address of the server.
-     */
-    private String getServerAddress() {
-        return JOptionPane.showInputDialog(
-                frame,
-                "Enter IP Address of the Library Server:",
-                "Welcome to the Library",
-                JOptionPane.QUESTION_MESSAGE);
     }
     /**
      * Prompt for and return the desired screen name.
@@ -58,18 +49,12 @@ public class Client {
     }
     /**
      * Connects to the server then enters the processing loop.
+     * @throws IOException If any client disconnects from server
+     *                      and can not get and set messages
      */
     public void run() throws IOException {
         // Make connection and initialize streams
-        boolean flagAdress = true;
-        String serverAddress = null;
-        while (flagAdress){
-            serverAddress = getServerAddress();
-            if(serverAddress.equals("127.0.0.1"))
-                flagAdress = false;
-        }
-
-        socket = new Socket(serverAddress, 9001);
+        socket = new Socket("127.0.0.1", 9001);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         out = new PrintWriter(socket.getOutputStream(), true);
         String line = null;
@@ -86,18 +71,20 @@ public class Client {
                 out.println(name);
                 
             } else if (line.startsWith("DATABASE")) {
-                System.out.println("Data base was detected. XML file is reading...");
-                System.out.println(line.substring(62));
+                Log.info("Data base was detected. XML file is reading...");
                 ClientXMLHandler.parseXMLLibrary(line.substring(62));
                 EventQueue.invokeLater(new Runnable() {
-                    @Override
                     public void run() {
                         ViewForm ex = new ViewForm();
                         ex.setVisible(true);
                         ViewForm.setNewStatus("Hello, " + name + "! You are welcome to the best library in the world.");
                     }
                 });
-            } else if (line.startsWith("UPDATEADD")) {
+            }  else if (line.startsWith("UPDATEDATABASE")) {
+                ClientXMLHandler.updateXMLLibrary(line.substring(68));
+                ConnectModelWithView connection = new ConnectModelWithView(ViewForm.model, ClientXMLHandler.clientLibrary);
+                connection.updateList();
+            }else if (line.startsWith("UPDATEADD")) {
                 ViewForm.setNewStatus("Updates were received. New book was added.");
                 ClientXMLHandler.addNewBook(line.substring(9), ClientXMLHandler.clientLibrary.length());
                 int position = ClientXMLHandler.clientLibrary.length();
@@ -117,31 +104,26 @@ public class Client {
                 int[] intgerIds = new int[stringIds.length];
                 for (int i = 0; i < intgerIds.length; i++) {
                     intgerIds[i] = Integer.parseInt(stringIds[i]);
-                    System.out.println(intgerIds[i]);
                 }
                 int[] elementsToRemove = ClientXMLHandler.removeBooks(intgerIds);
                 for (int i = 0; i < elementsToRemove.length; i++) {
-                    System.out.println(elementsToRemove[i]);
                 }
                 if (!line.substring(12).isEmpty()) {
                     for (int i = 0; i < elementsToRemove.length; i++) {
                         ViewForm.model.removeRow(elementsToRemove[i]);
-                        System.out.println("Element " + elementsToRemove[i] + " was deleted");
+                        Log.info("Element " + elementsToRemove[i] + " was deleted");
                     }
                 }
                 ConnectModelWithView connectionModel = new ConnectModelWithView(ViewForm.model, ClientXMLHandler.clientLibrary);
                 connectionModel.updateList();
-            } else if (line.startsWith("EDITERROR" + name)) {
+            } else if (line.startsWith("EDITERROR")) {
                 JOptionPane.showMessageDialog(null, "This item is edited by other user. Try in a few minutes", "System message", JOptionPane.WARNING_MESSAGE);
-            } else if (line.startsWith("EDITENABLE" + name)) {
-                flagEdit = true;
+            } else if (line.startsWith("EDITENABLE")) {
                 int selectedRow = ViewForm.table.getSelectedRow();
-                System.out.println(selectedRow);
-                System.out.println("Start edit!");
+                Log.info("Start edit!");
                 AddEditViewForm form = new AddEditViewForm(2, selectedRow);
 
             } else if (line.startsWith("UPDATEEDIT")) {
-                System.out.println(line.substring(10));
                 String[] stringIds = (line.substring(10)).split("[+]");
                 int id = Integer.parseInt(stringIds[0]);
                 int []ids = {id};

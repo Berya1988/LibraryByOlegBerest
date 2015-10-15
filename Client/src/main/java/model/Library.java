@@ -12,6 +12,10 @@ public class Library implements Serializable {
     private HashSet<Integer> ids = new HashSet<Integer>();
     private int length = 0;
 
+    public LinkedList<Copy> getBooks() {
+        return books;
+    }
+
     public void add(Copy element){
         if (!ids.contains(element.getId())) {
             ids.add(element.getId());

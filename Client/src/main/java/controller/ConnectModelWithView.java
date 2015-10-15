@@ -2,6 +2,7 @@ package controller;
 
 import model.Copy;
 import model.Library;
+import org.apache.log4j.Logger;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.LinkedList;
@@ -9,16 +10,21 @@ import java.util.LinkedList;
  * Created by Oleg on 26.08.2015.
  */
 public class ConnectModelWithView {
+    private static final Logger log = Logger.getLogger(ConnectModelWithView.class);
     private DefaultTableModel model;
     private Library library;
+    private static int sizeOfList;
+    private static int sizeOfTable;
 
     public ConnectModelWithView(DefaultTableModel model, Library library) {
         this.model = model;
+        this.sizeOfTable = this.model.getRowCount();
         this.library = library;
+        this.sizeOfList = library.length();
     }
 
     public void setConnection(){
-        System.out.println("There are " + library.length() + " books in the clientLibrary while connecting to the form.");
+        log.info("There are " + library.length() + " books in the clientLibrary while connecting to the form.");
         for (int i = 0; i < library.length(); i++) {
             model.addRow(new Object[]{i + 1,
                     library.getElement(i).getBook().getAuthor(),
@@ -57,14 +63,20 @@ public class ConnectModelWithView {
         }
     }
 
+
     public void updateList(){
-        for (int i = library.length()-1; i >=0 ; i--) {
+        for (int i = sizeOfTable-1; i >=0 ; i--) {
+        //for (int i = library.length()-1; i >=0 ; i--) {
             model.removeRow(i);
         }
         setConnection();
     }
 
     public static void findWords(LinkedList<Copy> linkedList, DefaultTableModel model){
+        for (int i = sizeOfList - 1; i >=0 ; i--) {
+            model.removeRow(i);
+        }
+
         for (int i = 0; i < linkedList.size(); i++) {
             model.addRow(new Object[]{i + 1,
                     linkedList.get(i).getBook().getAuthor(),
@@ -75,4 +87,5 @@ public class ConnectModelWithView {
                     linkedList.get(i).getPresent()});
         }
     }
+
 }

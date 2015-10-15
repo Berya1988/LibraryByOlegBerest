@@ -28,6 +28,7 @@
                     <archive>
                         <manifest>
                             <mainClass>controller.MainClassForServer</mainClass>
+                            <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
                 </configuration>

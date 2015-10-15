@@ -1,19 +1,22 @@
 package view;
 
 import controller.ClientXMLHandler;
+import controller.ConnectModelWithView;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created by Oleg on 27.08.2015.
  */
 public class AddEditViewForm extends JFrame {
+    private static final Logger Log = Logger.getLogger(AddEditViewForm.class);
     private static final long serialVersionUID = 1L;
     private Container pane;
     private GroupLayout layout;
@@ -37,6 +40,9 @@ public class AddEditViewForm extends JFrame {
 
     private JButton okBtn;
     private JButton cancelBtn;
+
+    private Date initialDate;
+    private Date currentDate;
 
     public AddEditViewForm(int action, int index) {
         this.action = action;
@@ -95,6 +101,7 @@ public class AddEditViewForm extends JFrame {
                 setTitle("Add new book");
                 break;
             case 2:
+                initialDate = new Date();
                 setTitle("Edit book information");
                 textFieldId.setText(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId()));
                 textFieldAuthor.setText(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getAuthor());
@@ -137,9 +144,15 @@ public class AddEditViewForm extends JFrame {
         setSize(300, 280);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                if(action == 2)
+                    Client.out.println("EDITFINISH" + ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId());
+            }
+        });
     }
 
-    private void initializeCompoments(){
+    private void initializeCompoments() {
         pane = getContentPane();
         layout = new GroupLayout(pane);
         pane.setLayout(layout);
@@ -155,17 +168,59 @@ public class AddEditViewForm extends JFrame {
         textFieldId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
                 char a = e.getKeyChar();
+                if(checkEditTime()== -1) {
+                    return;
+                }
                 if (!Character.isDigit(a)) {
                     e.consume();
                 }
             }
         });
         textFieldAuthor = new JTextField(8);
+        textFieldAuthor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                e.getKeyChar();
+                if (checkEditTime() == -1) {
+                    return;
+                }
+                else {
+                    initialDate = new Date();
+                }
+            }
+        });
         textFieldTitle = new JTextField(8);
+        textFieldTitle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                e.getKeyChar();
+                if (checkEditTime() == -1) {
+                    return;
+                }
+                else {
+                    initialDate = new Date();
+                }
+            }
+        });
         textFieldPages = new JTextField();
         textFieldPages.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
+                e.getKeyChar();
+                if (checkEditTime() == -1) {
+                    return;
+                }
+                else {
+                    initialDate = new Date();
+                }
+            }
+        });
+        textFieldPages.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent e) {
                 char a = e.getKeyChar();
+                if(checkEditTime()== -1) {
+                    return;
+                }
+                else {
+                    initialDate = new Date();
+                }
                 if (!Character.isDigit(a)) {
                     e.consume();
                 }
@@ -175,6 +230,12 @@ public class AddEditViewForm extends JFrame {
         textFieldYear.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
                 char a = e.getKeyChar();
+                if(checkEditTime()== -1) {
+                    return;
+                }
+                else {
+                    initialDate = new Date();
+                }
                 if (!Character.isDigit(a)) {
                     e.consume();
                 }
@@ -189,16 +250,22 @@ public class AddEditViewForm extends JFrame {
         cancelBtn = new JButton("Cancel");
 
         okBtn.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
-                String[] answers = {textFieldId.getText(), textFieldAuthor.getText(), textFieldTitle.getText(),
-                        textFieldPages.getText(), textFieldYear.getText(), comboBox.getSelectedItem().toString()};
+                if(checkEditTime()== -1) {
+                    return;
+                }
 
-                System.out.println("Action:" + action);
-                System.out.println("textFieldId: " + textFieldId.getText());
+                String[] answers = {textFieldId.getText().trim(), textFieldAuthor.getText().trim(), textFieldTitle.getText().trim(),
+                        textFieldPages.getText().trim(), textFieldYear.getText().trim(), comboBox.getSelectedItem().toString()};
+
+                if(textFieldId.getText().isEmpty() || textFieldAuthor.getText().isEmpty() || textFieldTitle.getText().isEmpty() ||
+                        textFieldPages.getText().isEmpty() || textFieldYear.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Wrong data. You should fill all empty fields", "System message", JOptionPane.WARNING_MESSAGE);
+                    dispose();
+                    return;
+                }
                 if(action == 2)
-                    System.out.println("Id: " + Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId()));
-                System.out.println("checkId: " + ClientXMLHandler.clientLibrary.checkId(textFieldId.getText()));
+                    Log.info("Id: " + Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId()));
                 if((action == 1 && ClientXMLHandler.clientLibrary.checkId(textFieldId.getText()))
                         ||(action == 2 && !textFieldId.getText().equals(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId())) && ClientXMLHandler.clientLibrary.checkId(textFieldId.getText()))) {
                     JOptionPane.showMessageDialog(null, "Identification number is already in use", "System message", JOptionPane.WARNING_MESSAGE);
@@ -209,6 +276,7 @@ public class AddEditViewForm extends JFrame {
                             Client.out.println("ADDBOOK" + ClientXMLHandler.createXMLRequest(answers));
                         } else if (action == 2){
                             Client.out.println("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
+                            Log.info("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
                         }
                     } catch (ParserConfigurationException e1) {
                             e1.printStackTrace();
@@ -225,12 +293,23 @@ public class AddEditViewForm extends JFrame {
         });
 
         cancelBtn.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 if(action == 2)
                     Client.out.println("EDITFINISH" + ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId());
             }
         });
+    }
+
+    private int checkEditTime(){
+        if(action == 2) {
+            currentDate = new Date();
+            if(currentDate.getTime() - initialDate.getTime() >= 10000) {
+                dispose();
+                JOptionPane.showMessageDialog(null, "You was disconnected by timeout. Try again", "System message", JOptionPane.WARNING_MESSAGE);
+                return -1;
+            }
+        }
+        return 1;
     }
 }
