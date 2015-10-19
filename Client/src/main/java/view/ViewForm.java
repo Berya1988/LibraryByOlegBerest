@@ -24,8 +24,8 @@ import javax.swing.table.DefaultTableModel;
 public class ViewForm extends JFrame {
     private static final Logger Log = Logger.getLogger(ViewForm.class);
     private static final long serialVersionUID = 1L;
-    public static DefaultTableModel model;
-    private JButton findBtn;
+    private static DefaultTableModel model;
+    private  static JButton findBtn;
     private JButton addBtn;
     private JButton editBtn;
     private JButton viewBtn;
@@ -40,11 +40,13 @@ public class ViewForm extends JFrame {
     private JLabel labelSort;
     private JScrollPane scrollPane;
     private GroupLayout layout;
-    public static JTable table;
+    private static JTable table;
     private JComboBox comboBox;
     private ConnectModelWithView connection;
     private final String labels[] = {"Default", "By title", "By author", "By id", "By year", "By pages" };
     private final DefaultComboBoxModel modelCombo = new DefaultComboBoxModel(labels);
+
+    private static boolean flagStartSort = false;
 
     public ViewForm() {
         initializeCompoments();
@@ -91,16 +93,13 @@ public class ViewForm extends JFrame {
         layout.linkSize(SwingConstants.HORIZONTAL, findBtn, addBtn, editBtn, viewBtn, removeBtn, cancelBtn, labelSort, comboBox);
         layout.linkSize(SwingConstants.VERTICAL, textFieldFind, textFieldStatus, comboBox);
         pack();
-        setTitle("Library:" + Client.name);
+        setTitle("Library:" + Client.getNameOfClient());
         setLocationRelativeTo(null);
         setSize(800, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
 
-    /**
-     *
-     */
     private void initializeCompoments(){
         textFieldFind = new JTextField(60);
         textFieldStatus = new JTextField(60);
@@ -118,27 +117,27 @@ public class ViewForm extends JFrame {
         createTable();
         scrollPane = new JScrollPane(table);
 
-        connection = new ConnectModelWithView(model, ClientXMLHandler.clientLibrary);
+        connection = new ConnectModelWithView(model, ClientXMLHandler.getClientLibraryLibrary());
 
         comboBox = new JComboBox(modelCombo);
         comboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent itemEvent) {
                 String kindOfSort = itemEvent.getItem().toString();
                 if (kindOfSort.equals("Default")) {
-                    Client.out.println("UPDATEDATABASE" + Client.name);
+                    Client.getPrintWriterOut().println("UPDATEDATABASE" + Client.getNameOfClient());
                     //connection.updateList();
                 } else if (kindOfSort.equals("By title")) {
-                    Collections.sort(ClientXMLHandler.clientLibrary.getBooks(), CopyBookTitleComparator.CopyBookTitleComparator);
+                    Collections.sort(ClientXMLHandler.getClientLibraryLibrary().getBooks(), new CopyBookTitleComparator());
                 } else if (kindOfSort.equals("By author")) {
-                    Collections.sort(ClientXMLHandler.clientLibrary.getBooks(), CopyBookAuthorComparator.CopyBookAuthorComparator);
+                    Collections.sort(ClientXMLHandler.getClientLibraryLibrary().getBooks(), new CopyBookAuthorComparator());
                 } else if (kindOfSort.equals("By id")) {
-                    Collections.sort(ClientXMLHandler.clientLibrary.getBooks(), CopyIdComparator.CopyIdComparator);
+                    Collections.sort(ClientXMLHandler.getClientLibraryLibrary().getBooks(), new CopyIdComparator());
                 } else if (kindOfSort.equals("By year")) {
-                    Collections.sort(ClientXMLHandler.clientLibrary.getBooks(), CopyBookYearComparator.CopyBookYearComparator);
+                    Collections.sort(ClientXMLHandler.getClientLibraryLibrary().getBooks(), new CopyBookYearComparator());
                 } else if (kindOfSort.equals("By pages")) {
-                    Collections.sort(ClientXMLHandler.clientLibrary.getBooks(), CopyBookPageNumberComparator.CopyBookPageNumberComparator);
+                    Collections.sort(ClientXMLHandler.getClientLibraryLibrary().getBooks(), new CopyBookPageNumberComparator());
                 }
-                connection.setSortedList(ClientXMLHandler.clientLibrary.getBooks());
+                connection.setSortedList(ClientXMLHandler.getClientLibraryLibrary().getBooks());
             }
         });
     }
@@ -161,7 +160,7 @@ public class ViewForm extends JFrame {
         table.getColumnModel().getColumn(6).setPreferredWidth(15);
         table.setDefaultRenderer(Object.class, new MyCellRendererAlign());
 
-        ConnectModelWithView connectionModel = new ConnectModelWithView(model, ClientXMLHandler.clientLibrary);
+        ConnectModelWithView connectionModel = new ConnectModelWithView(model, ClientXMLHandler.getClientLibraryLibrary());
         connectionModel.setConnection();
     }
 
@@ -177,6 +176,7 @@ public class ViewForm extends JFrame {
         addBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 AddEditViewForm form = new AddEditViewForm(1, -1);
+                form.showForm();
             }
         });
 
@@ -184,8 +184,8 @@ public class ViewForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int index = (Integer) table.getValueAt(table.getSelectedRow(), 5);
-                    Client.out.println("EDITREQUEST" + index + "+" + Client.name);
-                    Log.info("EDITREQUEST" + index + "+" + Client.name);
+                    Client.getPrintWriterOut().println("EDITREQUEST" + index + "+" + Client.getNameOfClient());
+                    Log.info("EDITREQUEST" + index + "+" + Client.getNameOfClient());
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, "You should select item", "System message", JOptionPane.WARNING_MESSAGE);
                     return;
@@ -206,18 +206,13 @@ public class ViewForm extends JFrame {
                     sb.append(arrIndices[i] + "+");
                 }
                 sb.append(arrIndices[arr.length - 1]);
-                Client.out.println(sb.toString());
+                Client.getPrintWriterOut().println(sb.toString());
             }
         });
 
         findBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-//                findBtn.setEnabled(false);
-//                addBtn.setEnabled(false);
-//                editBtn.setEnabled(false);
-//                viewBtn.setEnabled(false);
-//                removeBtn.setEnabled(false);
-//                comboBox.setEnabled(false);
+                flagStartSort = true;
                 cancelBtn.setVisible(true);
                 LinkedList<Copy> findLibrary = new LinkedList<Copy>();
                 int count = 0;
@@ -227,7 +222,7 @@ public class ViewForm extends JFrame {
                 for (int i = 0; i < model.getRowCount(); i++) {
                     for (int j = 0; j < model.getColumnCount(); j++) {
                         if(model.getValueAt(i, j).toString().contains(textFieldFind.getText())) {
-                            findLibrary.add(ClientXMLHandler.clientLibrary.getElement(i));
+                            findLibrary.add(ClientXMLHandler.getClientLibraryLibrary().getElement(i));
                             sb.append((i + 1) + ", ");
                             flagFind = true;
                             count++;
@@ -256,6 +251,7 @@ public class ViewForm extends JFrame {
                 try {
                     int selectedRow = table.getSelectedRow();
                     AddEditViewForm form = new AddEditViewForm(3, selectedRow);
+                    form.showForm();
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, "You should select item", "System message", JOptionPane.WARNING_MESSAGE);
                     return;
@@ -265,15 +261,11 @@ public class ViewForm extends JFrame {
 
         cancelBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                findBtn.setEnabled(true);
-                addBtn.setEnabled(true);
-                editBtn.setEnabled(true);
-                viewBtn.setEnabled(true);
-                removeBtn.setEnabled(true);
-                comboBox.setEnabled(true);
                 cancelBtn.setVisible(false);
-                connection = new ConnectModelWithView(model, ClientXMLHandler.clientLibrary);
+                connection = new ConnectModelWithView(model, ClientXMLHandler.getClientLibraryLibrary());
                 connection.updateList();
+                flagStartSort = false;
+                textFieldFind.setText("");
             }
         });
     }
@@ -281,5 +273,15 @@ public class ViewForm extends JFrame {
     public static void setNewStatus(String message) {
         textFieldStatus.setText(message);
     }
+
+
+    public static DefaultTableModel getModel(){
+        return model;
+    }
+
+    public static JTable getTable(){
+        return table;
+    }
+
 }
 

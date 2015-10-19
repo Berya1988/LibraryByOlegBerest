@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.LinkedList;
+
 /**
  * Created by Oleg on 26.08.2015.
  */
@@ -14,7 +15,7 @@ public class ConnectModelWithView {
     private DefaultTableModel model;
     private Library library;
     private static int sizeOfList;
-    private static int sizeOfTable;
+    private int sizeOfTable;
 
     public ConnectModelWithView(DefaultTableModel model, Library library) {
         this.model = model;
@@ -23,7 +24,7 @@ public class ConnectModelWithView {
         this.sizeOfList = library.length();
     }
 
-    public void setConnection(){
+    public void setConnection() {
         log.info("There are " + library.length() + " books in the clientLibrary while connecting to the form.");
         for (int i = 0; i < library.length(); i++) {
             model.addRow(new Object[]{i + 1,
@@ -36,44 +37,31 @@ public class ConnectModelWithView {
         }
     }
 
-    public void setSortedList(LinkedList<Copy> linkedList){
-        for (int i = library.length()-1; i >=0 ; i--) {
+    public void setSortedList(LinkedList<Copy> linkedList) {
+        for (int i = library.length() - 1; i >= 0; i--) {
             model.removeRow(i);
         }
         for (int i = 0; i < linkedList.size(); i++) {
+            Copy currentCopy = linkedList.get(i);
             model.addRow(new Object[]{i + 1,
-                    linkedList.get(i).getBook().getAuthor(),
-                    linkedList.get(i).getBook().getTitle(),
-                    linkedList.get(i).getBook().getYear(),
-                    linkedList.get(i).getBook().getPageNumber(),
-                    linkedList.get(i).getId(),
-                    linkedList.get(i).getPresent()});
+                    currentCopy.getBook().getAuthor(),
+                    currentCopy.getBook().getTitle(),
+                    currentCopy.getBook().getYear(),
+                    currentCopy.getBook().getPageNumber(),
+                    currentCopy.getId(),
+                    currentCopy.getPresent()});
         }
     }
 
-    public void setList(LinkedList<Copy> linkedList){
-        for (int i = 0; i < linkedList.size(); i++) {
-            model.addRow(new Object[]{i + 1,
-                    linkedList.get(i).getBook().getAuthor(),
-                    linkedList.get(i).getBook().getTitle(),
-                    linkedList.get(i).getBook().getYear(),
-                    linkedList.get(i).getBook().getPageNumber(),
-                    linkedList.get(i).getId(),
-                    linkedList.get(i).getPresent()});
-        }
-    }
-
-
-    public void updateList(){
-        for (int i = sizeOfTable-1; i >=0 ; i--) {
-        //for (int i = library.length()-1; i >=0 ; i--) {
+    public void updateList() {
+        for (int i = sizeOfTable - 1; i >= 0; i--) {
             model.removeRow(i);
         }
         setConnection();
     }
 
-    public static void findWords(LinkedList<Copy> linkedList, DefaultTableModel model){
-        for (int i = sizeOfList - 1; i >=0 ; i--) {
+    public static void findWords(LinkedList<Copy> linkedList, DefaultTableModel model) {
+        for (int i = sizeOfList - 1; i >= 0; i--) {
             model.removeRow(i);
         }
 

@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-public class Library implements Serializable {
+public class Library {
     /**
      * The linked list buffer into which the elements of the ArrayList are stored.
      * The capacity of the ArrayList is the length of this array buffer.

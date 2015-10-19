@@ -1,0 +1,230 @@
+2015-10-13 13:23:18 INFO  Client:72 - Data base was detected. XML file is reading...
+2015-10-13 13:23:18 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 15:49:35 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 15:49:36 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 16:22:49 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 16:22:49 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:03:38 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 17:03:39 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:03:48 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 17:03:48 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:04:20 INFO  ViewForm:185 - EDITREQUEST32+Oleg
+2015-10-13 17:04:20 INFO  Client:122 - Start edit!
+2015-10-13 17:04:24 INFO  ViewForm:185 - EDITREQUEST32+Dan
+2015-10-13 17:04:30 INFO  AddEditViewForm:226 - Id: 32
+2015-10-13 17:04:30 INFO  AddEditViewForm:237 - EDITBOOK32+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="32"><authors>Lol</authors><title>Non</title><pageNumber>321</pageNumber><year>2013</year><isPresent>true</isPresent></book></items></library>
+2015-10-13 17:04:30 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:04:30 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:04:38 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:05:12 INFO  ViewForm:185 - EDITREQUEST32+Dan
+2015-10-13 17:05:12 INFO  Client:122 - Start edit!
+2015-10-13 17:05:21 INFO  AddEditViewForm:226 - Id: 32
+2015-10-13 17:05:21 INFO  AddEditViewForm:237 - EDITBOOK32+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="32"><authors>Lol</authors><title>Hello</title><pageNumber>321</pageNumber><year>2013</year><isPresent>true</isPresent></book></items></library>
+2015-10-13 17:05:21 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:05:21 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:05:42 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:05:53 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:06:44 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 17:06:44 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:06:59 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 17:06:59 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-13 17:07:17 INFO  ViewForm:185 - EDITREQUEST23+Ben
+2015-10-13 17:07:17 INFO  Client:122 - Start edit!
+2015-10-13 17:07:21 INFO  ViewForm:185 - EDITREQUEST23+Oleg
+2015-10-13 17:09:27 INFO  ViewForm:185 - EDITREQUEST23+Oleg
+2015-10-13 17:09:27 INFO  Client:122 - Start edit!
+2015-10-13 17:09:30 INFO  AddEditViewForm:226 - Id: 23
+2015-10-13 17:09:30 INFO  AddEditViewForm:237 - EDITBOOK23+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="23"><authors>OKf</authors><title>gddfg</title><pageNumber>325</pageNumber><year>325</year><isPresent>false</isPresent></book></items></library>
+2015-10-13 17:09:30 INFO  ConnectModelWithView:27 - There are 4 books in the clientLibrary while connecting to the form.
+2015-10-13 17:09:30 INFO  ConnectModelWithView:27 - There are 4 books in the clientLibrary while connecting to the form.
+2015-10-13 17:10:21 INFO  ConnectModelWithView:27 - There are 4 books in the clientLibrary while connecting to the form.
+2015-10-13 17:10:34 INFO  ConnectModelWithView:27 - There are 4 books in the clientLibrary while connecting to the form.
+2015-10-13 17:10:43 INFO  ViewForm:185 - EDITREQUEST22+Oleg
+2015-10-13 17:10:43 INFO  Client:122 - Start edit!
+2015-10-13 17:14:09 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 17:14:09 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:14:33 INFO  ViewForm:185 - EDITREQUEST10+Karl
+2015-10-13 17:14:33 INFO  Client:122 - Start edit!
+2015-10-13 17:14:40 INFO  AddEditViewForm:226 - Id: 10
+2015-10-13 17:14:40 INFO  AddEditViewForm:237 - EDITBOOK10+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="10"><authors>Herbert Schildt</authors><title>dfgs</title><pageNumber>2000</pageNumber><year>2015</year><isPresent>true</isPresent></book></items></library>
+2015-10-13 17:14:40 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:17:32 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 17:17:32 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:17:41 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-13 17:17:42 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:18:02 INFO  Client:113 - Element 0 was deleted
+2015-10-13 17:18:02 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-13 17:18:02 INFO  Client:113 - Element 0 was deleted
+2015-10-13 17:18:02 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-13 17:21:23 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:21:41 INFO  ViewForm:185 - EDITREQUEST22+dfge
+2015-10-13 17:21:41 INFO  Client:122 - Start edit!
+2015-10-13 17:21:45 INFO  AddEditViewForm:226 - Id: 22
+2015-10-13 17:21:45 INFO  AddEditViewForm:237 - EDITBOOK22+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="22"><authors>Robert Lafore2</authors><title>Data Structures and Algorithms in Java</title><pageNumber>702</pageNumber><year>2013</year><isPresent>false</isPresent></book></items></library>
+2015-10-13 17:21:45 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:21:45 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:21:51 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-13 17:22:44 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-15 09:33:56 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-15 09:33:58 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-15 11:36:31 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-15 11:36:31 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-15 12:35:48 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-15 12:35:48 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-15 12:36:23 INFO  ViewForm:188 - EDITREQUEST43+Olga
+2015-10-15 12:36:23 INFO  Client:123 - Start edit!
+2015-10-15 12:36:46 INFO  ViewForm:188 - EDITREQUEST43+Olga
+2015-10-15 12:36:46 INFO  Client:123 - Start edit!
+2015-10-15 12:37:10 INFO  ViewForm:188 - EDITREQUEST43+Olga
+2015-10-15 12:37:10 INFO  Client:123 - Start edit!
+2015-10-15 12:37:15 INFO  AddEditViewForm:268 - Id: 43
+2015-10-15 12:37:15 INFO  AddEditViewForm:279 - EDITBOOK43+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="43"><authors>Fdger</authors><title>dfger</title><pageNumber>43</pageNumber><year>34</year><isPresent>true</isPresent></book></items></library>
+2015-10-15 12:37:15 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-15 12:37:21 INFO  ViewForm:188 - EDITREQUEST43+Olga
+2015-10-15 12:37:21 INFO  Client:123 - Start edit!
+2015-10-15 12:37:24 INFO  AddEditViewForm:268 - Id: 43
+2015-10-15 12:37:24 INFO  AddEditViewForm:279 - EDITBOOK43+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="43"><authors>Fdger</authors><title>dfgererteg</title><pageNumber>43</pageNumber><year>34</year><isPresent>true</isPresent></book></items></library>
+2015-10-15 12:37:24 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-15 12:37:27 INFO  ViewForm:188 - EDITREQUEST43+Olga
+2015-10-15 12:37:27 INFO  Client:123 - Start edit!
+2015-10-15 15:49:55 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-15 15:49:55 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-15 15:50:08 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-15 15:50:08 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-15 15:50:24 INFO  ViewForm:185 - EDITREQUEST22+Leo
+2015-10-15 15:50:24 INFO  Client:123 - Start edit!
+2015-10-15 15:56:30 INFO  ViewForm:185 - EDITREQUEST22+Leo
+2015-10-15 15:56:30 INFO  Client:123 - Start edit!
+2015-10-15 15:56:35 INFO  ViewForm:185 - EDITREQUEST10+Oleg
+2015-10-15 15:56:35 INFO  Client:123 - Start edit!
+2015-10-15 15:56:39 INFO  ViewForm:185 - EDITREQUEST22+Leo
+2015-10-15 16:03:22 INFO  ViewForm:185 - EDITREQUEST22+Leo
+2015-10-15 16:03:22 INFO  Client:123 - Start edit!
+2015-10-16 13:41:46 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 13:41:46 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 13:42:07 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 13:42:07 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 13:42:41 INFO  Client:114 - Element 1 was deleted
+2015-10-16 13:42:41 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 13:42:56 INFO  Client:114 - Element 0 was deleted
+2015-10-16 13:42:56 INFO  ConnectModelWithView:27 - There are 0 books in the clientLibrary while connecting to the form.
+2015-10-16 13:49:37 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 13:49:37 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 13:49:55 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 13:49:55 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 13:50:23 INFO  ViewForm:185 - EDITREQUEST22+kjl
+2015-10-16 13:50:23 INFO  Client:123 - Start edit!
+2015-10-16 13:50:29 INFO  AddEditViewForm:270 - Id: 22
+2015-10-16 13:50:29 INFO  AddEditViewForm:281 - EDITBOOK22+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="28"><authors>Robert Lafore</authors><title>Data Structures and Algorithms in Java</title><pageNumber>702</pageNumber><year>2013</year><isPresent>false</isPresent></book></items></library>
+2015-10-16 13:50:29 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 13:50:29 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 14:41:07 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 14:41:09 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 14:47:19 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 14:47:19 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 14:48:48 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 14:48:48 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 14:57:32 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 14:57:32 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:04:37 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 15:04:37 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:04:51 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 15:04:52 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:05:16 INFO  ViewForm:188 - EDITREQUEST10+Olga
+2015-10-16 15:05:16 INFO  Client:128 - Start edit!
+2015-10-16 15:05:21 INFO  AddEditViewForm:272 - Id: 10
+2015-10-16 15:05:21 INFO  AddEditViewForm:283 - EDITBOOK10+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="10"><authors>Oleg Schildt</authors><title>Java Ninth Edition. The Complete Reference</title><pageNumber>2000</pageNumber><year>2015</year><isPresent>true</isPresent></book></items></library>
+2015-10-16 15:05:21 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-16 15:05:21 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-16 15:25:11 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 15:25:12 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:25:28 INFO  Client:74 - Data base was detected. XML file is reading...
+2015-10-16 15:25:28 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:25:40 INFO  ViewForm:188 - EDITREQUEST10+Oleg
+2015-10-16 15:25:56 INFO  ViewForm:188 - EDITREQUEST10+Oleg
+2015-10-16 15:25:59 INFO  AddEditViewForm:272 - Id: 10
+2015-10-16 15:25:59 INFO  AddEditViewForm:283 - EDITBOOK10+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="20"><authors>Herbert Schildt</authors><title>Java Ninth Edition. The Complete Reference</title><pageNumber>2000</pageNumber><year>2015</year><isPresent>true</isPresent></book></items></library>
+2015-10-16 15:25:59 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:25:59 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:26:12 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:26:57 INFO  ViewForm:188 - EDITREQUEST22+Olga
+2015-10-16 15:26:57 INFO  Client:130 - Start edit!
+2015-10-16 15:27:04 INFO  AddEditViewForm:272 - Id: 22
+2015-10-16 15:27:04 INFO  AddEditViewForm:283 - EDITBOOK22+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="22"><authors>Oleg Lafore</authors><title>Data Structures and Algorithms in Java</title><pageNumber>702</pageNumber><year>2013</year><isPresent>false</isPresent></book></items></library>
+2015-10-16 15:27:04 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:27:04 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:27:49 INFO  Client:114 - Element 0 was deleted
+2015-10-16 15:27:49 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 15:27:49 INFO  Client:114 - Element 0 was deleted
+2015-10-16 15:27:49 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 15:27:54 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 15:39:27 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:39:27 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:39:43 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:39:43 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:40:10 INFO  ViewForm:188 - EDITREQUEST10+Robert
+2015-10-16 15:40:10 INFO  Client:128 - Start edit!
+2015-10-16 15:40:17 INFO  AddEditViewForm:272 - Id: 10
+2015-10-16 15:40:17 INFO  AddEditViewForm:283 - EDITBOOK10+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="35"><authors>Herbert Schildt</authors><title>Java Ninth Edition. The Complete Reference</title><pageNumber>2000</pageNumber><year>2015</year><isPresent>true</isPresent></book></items></library>
+2015-10-16 15:40:17 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:40:17 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:42:06 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:42:06 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:43:11 INFO  ViewForm:188 - EDITREQUEST35+Robert
+2015-10-16 15:43:11 INFO  Client:128 - Start edit!
+2015-10-16 15:43:17 INFO  AddEditViewForm:272 - Id: 35
+2015-10-16 15:43:17 INFO  AddEditViewForm:283 - EDITBOOK35+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="35"><authors>Oleg Schildt</authors><title>Java Ninth Edition. The Complete Reference</title><pageNumber>2000</pageNumber><year>2015</year><isPresent>true</isPresent></book></items></library>
+2015-10-16 15:43:17 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:43:17 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:43:25 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:43:52 INFO  ViewForm:188 - EDITREQUEST22+Robert
+2015-10-16 15:43:52 INFO  Client:128 - Start edit!
+2015-10-16 15:43:56 INFO  AddEditViewForm:272 - Id: 22
+2015-10-16 15:43:56 INFO  AddEditViewForm:283 - EDITBOOK22+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library><items><book id="22"><authors>Robert Lafore</authors><title>Data Structures and Algorithms in Java</title><pageNumber>702</pageNumber><year>2010</year><isPresent>false</isPresent></book></items></library>
+2015-10-16 15:43:56 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:43:56 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:44:16 INFO  Client:113 - Element 0 was deleted
+2015-10-16 15:44:16 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 15:44:16 INFO  Client:113 - Element 0 was deleted
+2015-10-16 15:44:16 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 15:46:48 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:46:48 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 15:47:01 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:47:01 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 15:48:17 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:48:17 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-16 15:49:28 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:49:28 INFO  ConnectModelWithView:27 - There are 4 books in the clientLibrary while connecting to the form.
+2015-10-16 15:49:50 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:49:50 INFO  ConnectModelWithView:27 - There are 4 books in the clientLibrary while connecting to the form.
+2015-10-16 15:50:24 INFO  Client:116 - Element 1 was deleted
+2015-10-16 15:50:24 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-16 15:50:24 INFO  Client:116 - Element 1 was deleted
+2015-10-16 15:50:24 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-16 15:50:51 INFO  Client:116 - Element 2 was deleted
+2015-10-16 15:50:51 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:58:19 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:58:19 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:58:41 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:58:42 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 15:59:32 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 15:59:32 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-16 16:00:37 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 16:00:37 INFO  ConnectModelWithView:27 - There are 3 books in the clientLibrary while connecting to the form.
+2015-10-16 16:00:54 INFO  Client:116 - Element 1 was deleted
+2015-10-16 16:00:54 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 16:00:54 INFO  Client:116 - Element 1 was deleted
+2015-10-16 16:00:54 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 16:01:04 INFO  Client:116 - Element 0 was deleted
+2015-10-16 16:01:04 INFO  Client:116 - Element 0 was deleted
+2015-10-16 16:01:04 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 16:01:04 INFO  ConnectModelWithView:27 - There are 1 books in the clientLibrary while connecting to the form.
+2015-10-16 17:04:43 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 17:04:46 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-16 17:04:53 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-16 17:04:53 INFO  ConnectModelWithView:27 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-19 16:04:33 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-19 16:04:33 INFO  ConnectModelWithView:28 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-19 16:12:46 INFO  Client:73 - Data base was detected. XML file is reading...
+2015-10-19 16:12:46 INFO  ConnectModelWithView:28 - There are 2 books in the clientLibrary while connecting to the form.
+2015-10-19 16:12:52 INFO  ConnectModelWithView:28 - There are 2 books in the clientLibrary while connecting to the form.

@@ -18,7 +18,7 @@ import model.Copy;
 import java.io.*;
 
 public class ClientXMLHandler {
-    public static Library clientLibrary = new Library();
+    private static Library clientLibrary = new Library();
 
     public static void updateXMLLibrary(String xmlRecords){
         for (int i = clientLibrary.length()-1; i >=0 ; i--) {
@@ -162,6 +162,10 @@ public class ClientXMLHandler {
             }
         }
         return indexesOfList;
+    }
+
+    public static Library getClientLibraryLibrary(){
+        return clientLibrary;
     }
 }
 

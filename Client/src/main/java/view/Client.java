@@ -15,8 +15,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  * The client follows the Library Protocol which is as follows.
@@ -30,11 +29,11 @@ import javax.swing.JOptionPane;
  */
 public class Client {
     private static final Logger Log = Logger.getLogger(Client.class);
-    public static BufferedReader in;
-    public static PrintWriter out;
-    public JFrame frame;
-    public static Socket socket;
-    public static String name;
+    private BufferedReader in;
+    private static PrintWriter out;
+    private JFrame frame;
+    private Socket socket;
+    private static String name;
     public Client() {
     }
     /**
@@ -82,20 +81,20 @@ public class Client {
                 });
             }  else if (line.startsWith("UPDATEDATABASE")) {
                 ClientXMLHandler.updateXMLLibrary(line.substring(68));
-                ConnectModelWithView connection = new ConnectModelWithView(ViewForm.model, ClientXMLHandler.clientLibrary);
+                ConnectModelWithView connection = new ConnectModelWithView(ViewForm.getModel(), ClientXMLHandler.getClientLibraryLibrary());
                 connection.updateList();
             }else if (line.startsWith("UPDATEADD")) {
                 ViewForm.setNewStatus("Updates were received. New book was added.");
-                ClientXMLHandler.addNewBook(line.substring(9), ClientXMLHandler.clientLibrary.length());
-                int position = ClientXMLHandler.clientLibrary.length();
+                ClientXMLHandler.addNewBook(line.substring(9), ClientXMLHandler.getClientLibraryLibrary().length());
+                int position = ClientXMLHandler.getClientLibraryLibrary().length();
                 if (!line.substring(9).isEmpty()) {
-                    ViewForm.model.addRow(new Object[]{position,
-                            ClientXMLHandler.clientLibrary.getElement(position-1).getBook().getAuthor(),
-                            ClientXMLHandler.clientLibrary.getElement(position-1).getBook().getTitle(),
-                            ClientXMLHandler.clientLibrary.getElement(position-1).getBook().getYear(),
-                            ClientXMLHandler.clientLibrary.getElement(position-1).getBook().getPageNumber(),
-                            ClientXMLHandler.clientLibrary.getElement(position-1).getId(),
-                            ClientXMLHandler.clientLibrary.getElement(position-1).getPresent()});
+                    ViewForm.getModel().addRow(new Object[]{position,
+                            ClientXMLHandler.getClientLibraryLibrary().getElement(position - 1).getBook().getAuthor(),
+                            ClientXMLHandler.getClientLibraryLibrary().getElement(position - 1).getBook().getTitle(),
+                            ClientXMLHandler.getClientLibraryLibrary().getElement(position - 1).getBook().getYear(),
+                            ClientXMLHandler.getClientLibraryLibrary().getElement(position - 1).getBook().getPageNumber(),
+                            ClientXMLHandler.getClientLibraryLibrary().getElement(position - 1).getId(),
+                            ClientXMLHandler.getClientLibraryLibrary().getElement(position - 1).getPresent()});
                 }
                 ViewForm.setNewStatus("New book was added to the library.");
             } else if (line.startsWith("UPDATEREMOVE")) {
@@ -110,34 +109,41 @@ public class Client {
                 }
                 if (!line.substring(12).isEmpty()) {
                     for (int i = 0; i < elementsToRemove.length; i++) {
-                        ViewForm.model.removeRow(elementsToRemove[i]);
+                        ViewForm.getModel().removeRow(elementsToRemove[i]);
                         Log.info("Element " + elementsToRemove[i] + " was deleted");
                     }
                 }
-                ConnectModelWithView connectionModel = new ConnectModelWithView(ViewForm.model, ClientXMLHandler.clientLibrary);
+                ConnectModelWithView connectionModel = new ConnectModelWithView(ViewForm.getModel(), ClientXMLHandler.getClientLibraryLibrary());
                 connectionModel.updateList();
             } else if (line.startsWith("EDITERROR")) {
                 JOptionPane.showMessageDialog(null, "This item is edited by other user. Try in a few minutes", "System message", JOptionPane.WARNING_MESSAGE);
             } else if (line.startsWith("EDITENABLE")) {
-                int selectedRow = ViewForm.table.getSelectedRow();
-                Log.info("Start edit!");
-                AddEditViewForm form = new AddEditViewForm(2, selectedRow);
-
+                    int selectedRow = ViewForm.getTable().getSelectedRow();
+                    Log.info("Start edit!");
+                    AddEditViewForm form = new AddEditViewForm(2, selectedRow);
+                    form.showForm();
             } else if (line.startsWith("UPDATEEDIT")) {
                 String[] stringIds = (line.substring(10)).split("[+]");
                 int id = Integer.parseInt(stringIds[0]);
                 int []ids = {id};
-                int index = ClientXMLHandler.clientLibrary.getIndexOfElementById(id);
+                int index = ClientXMLHandler.getClientLibraryLibrary().getIndexOfElementById(id);
 
                 ViewForm.setNewStatus("Updates were received. Book " + (index + 1) + " was edited.");
 
                 if (!stringIds[1].isEmpty()) {
                     ClientXMLHandler.removeBooks(ids);
                     ClientXMLHandler.addNewBook(stringIds[1], index);
-                    ConnectModelWithView connectionModel = new ConnectModelWithView(ViewForm.model, ClientXMLHandler.clientLibrary);
+                    ConnectModelWithView connectionModel = new ConnectModelWithView(ViewForm.getModel(), ClientXMLHandler.getClientLibraryLibrary());
                     connectionModel.updateList();
                 }
             }
         }
+    }
+    public static PrintWriter getPrintWriterOut(){
+        return out;
+    }
+
+    public static String getNameOfClient(){
+        return name;
     }
 }

@@ -21,7 +21,7 @@ import java.io.*;
  * Created by Oleg on 26.08.2015.
  */
 public class ServerXMLHandler {
-    public static Library serverLibrary = new Library();
+    private static Library serverLibrary = new Library();
 
     public static void createLibraryArchive() throws ParserConfigurationException, TransformerException, IOException {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -195,13 +195,20 @@ public class ServerXMLHandler {
     }
 
     public static String transformXMLToString(String filename) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(new File(filename)));
-        String line;
-        StringBuilder sb = new StringBuilder();
-        while((line = br.readLine())!= null){
-            sb.append(line.trim());
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(new File(filename)));
+
+            String line;
+            StringBuilder sb = new StringBuilder();
+            while ((line = br.readLine()) != null) {
+                sb.append(line.trim());
+            }
+            return sb.toString();
         }
-        return sb.toString();
+        finally {
+            br.close();
+        }
     }
 
     public static synchronized void removeBooks(int[] indecesToRemove) {
@@ -214,4 +221,9 @@ public class ServerXMLHandler {
             }
         }
     }
+
+    public static Library getServerLibrary(){
+        return serverLibrary;
+    }
+
 }

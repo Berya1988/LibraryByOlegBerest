@@ -21,6 +21,7 @@ public class AddEditViewForm extends JFrame {
     private Container pane;
     private GroupLayout layout;
     private int action;                             //1 - add, 2 - edit, 3 - view
+
     private int indexOfItem;
 
     private JLabel labelId;
@@ -47,6 +48,8 @@ public class AddEditViewForm extends JFrame {
     public AddEditViewForm(int action, int index) {
         this.action = action;
         this.indexOfItem = index;
+    }
+    public void showForm() {
         initializeCompoments();
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
@@ -103,12 +106,12 @@ public class AddEditViewForm extends JFrame {
             case 2:
                 initialDate = new Date();
                 setTitle("Edit book information");
-                textFieldId.setText(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId()));
-                textFieldAuthor.setText(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getAuthor());
-                textFieldTitle.setText(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getTitle());
-                textFieldPages.setText(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getPageNumber()));
-                textFieldYear.setText(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getYear()));
-                if(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getPresent()) {
+                textFieldId.setText(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId()));
+                textFieldAuthor.setText(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getBook().getAuthor());
+                textFieldTitle.setText(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getBook().getTitle());
+                textFieldPages.setText(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getBook().getPageNumber()));
+                textFieldYear.setText(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getBook().getYear()));
+                if(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getPresent()) {
                     comboBox.setSelectedIndex(0);
                 }
                 else {
@@ -118,17 +121,17 @@ public class AddEditViewForm extends JFrame {
             case 3:
                 setTitle("View book information");
                 okBtn.setVisible(false);
-                textFieldId.setText(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId()));
+                textFieldId.setText(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId()));
                 textFieldId.setEditable(false);
-                textFieldAuthor.setText(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getAuthor());
+                textFieldAuthor.setText(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getBook().getAuthor());
                 textFieldAuthor.setEditable(false);
-                textFieldTitle.setText(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getTitle());
+                textFieldTitle.setText(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getBook().getTitle());
                 textFieldTitle.setEditable(false);
-                textFieldPages.setText(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getPageNumber()));
+                textFieldPages.setText(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getBook().getPageNumber()));
                 textFieldPages.setEditable(false);
-                textFieldYear.setText(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getBook().getYear()));
+                textFieldYear.setText(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getBook().getYear()));
                 textFieldYear.setEditable(false);
-                if(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getPresent()) {
+                if(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getPresent()) {
                     comboBox.setSelectedIndex(0);
                 }
                 else {
@@ -137,6 +140,8 @@ public class AddEditViewForm extends JFrame {
                 comboBox.setEditable(false);
                 comboBox.setEnabled(false);
                 break;
+            default:
+                return;
         }
         pack();
         setResizable(false);
@@ -147,7 +152,7 @@ public class AddEditViewForm extends JFrame {
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 if(action == 2)
-                    Client.out.println("EDITFINISH" + ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId());
+                    Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
     }
@@ -265,17 +270,17 @@ public class AddEditViewForm extends JFrame {
                     return;
                 }
                 if(action == 2)
-                    Log.info("Id: " + Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId()));
-                if((action == 1 && ClientXMLHandler.clientLibrary.checkId(textFieldId.getText()))
-                        ||(action == 2 && !textFieldId.getText().equals(Integer.toString(ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId())) && ClientXMLHandler.clientLibrary.checkId(textFieldId.getText()))) {
+                    Log.info("Id: " + Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId()));
+                if((action == 1 && ClientXMLHandler.getClientLibraryLibrary().checkId(textFieldId.getText()))
+                        ||(action == 2 && !textFieldId.getText().equals(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId())) && ClientXMLHandler.getClientLibraryLibrary().checkId(textFieldId.getText()))) {
                     JOptionPane.showMessageDialog(null, "Identification number is already in use", "System message", JOptionPane.WARNING_MESSAGE);
                 }
                 else {
                     try {
                         if (action == 1) {
-                            Client.out.println("ADDBOOK" + ClientXMLHandler.createXMLRequest(answers));
+                            Client.getPrintWriterOut().println("ADDBOOK" + ClientXMLHandler.createXMLRequest(answers));
                         } else if (action == 2){
-                            Client.out.println("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
+                            Client.getPrintWriterOut().println("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
                             Log.info("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
                         }
                     } catch (ParserConfigurationException e1) {
@@ -288,7 +293,7 @@ public class AddEditViewForm extends JFrame {
                     }
                 dispose();
                 if(action == 2)
-                    Client.out.println("EDITFINISH" + ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId());
+                    Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
 
@@ -296,7 +301,7 @@ public class AddEditViewForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 if(action == 2)
-                    Client.out.println("EDITFINISH" + ClientXMLHandler.clientLibrary.getElement(indexOfItem).getId());
+                    Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
     }

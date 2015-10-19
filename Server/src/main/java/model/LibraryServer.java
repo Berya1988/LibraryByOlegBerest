@@ -28,7 +28,7 @@ public class LibraryServer extends Thread {
     /**
      * The set of clients which are currently connected to the server.
      */
-    public static HashSet<PrintWriter> writers = new HashSet<PrintWriter>();
+    private static HashSet<PrintWriter> writers = new HashSet<PrintWriter>();
     /**
      * The set of pairs [name of client - client].
      */
@@ -36,7 +36,7 @@ public class LibraryServer extends Thread {
     /**
      * The set of pairs [id of edited book - date of edit beginning], which helps to control edited ids.
      */
-    public static HashMap<Integer, Date> editedIds = new HashMap<Integer, Date>();
+    private static HashMap<Integer, Date> editedIds = new HashMap<Integer, Date>();
     private String name;
     private BufferedReader in;
     private PrintWriter out;
@@ -96,7 +96,7 @@ public class LibraryServer extends Thread {
                 }
                 else if (input.startsWith("ADDBOOK")) {
                     log.info("New request to add book");
-                    ServerXMLHandler.addNewBook(input.substring(61), ServerXMLHandler.serverLibrary.length());
+                    ServerXMLHandler.addNewBook(input.substring(61), ServerXMLHandler.getServerLibrary().length());
                     for (PrintWriter writer : writers) {
                         writer.println("UPDATEADD" + input.substring(61));
                     }
@@ -168,7 +168,7 @@ public class LibraryServer extends Thread {
                     String[] stringIds = (input.substring(8)).split("[+]");
                     int[] id = {Integer.parseInt(stringIds[0])};
 
-                    int index = ServerXMLHandler.serverLibrary.getIndexOfElementById(id[0]);
+                    int index = ServerXMLHandler.getServerLibrary().getIndexOfElementById(id[0]);
                     ServerXMLHandler.removeBooks(id);
                     ServerXMLHandler.addNewBook(stringIds[1].substring(54), index);
                     editedIds.remove(id[0]);

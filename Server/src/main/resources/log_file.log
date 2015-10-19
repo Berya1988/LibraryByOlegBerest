@@ -50,3 +50,109 @@
 2015-10-15 12:37:15 INFO  LibraryServer:167 - New request to edit book from the library.
 2015-10-15 12:37:24 INFO  LibraryServer:167 - New request to edit book from the library.
 2015-10-15 12:38:25 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-15 15:49:15 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-15 15:49:19 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-15 15:49:55 INFO  LibraryServer:88 - NAMEACCEPTED:Oleg
+2015-10-15 15:50:08 INFO  LibraryServer:88 - NAMEACCEPTED:Leo
+2015-10-15 16:28:27 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-15 16:28:31 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 13:41:09 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-16 13:41:14 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-16 13:41:46 INFO  LibraryServer:88 - NAMEACCEPTED:Oleg
+2015-10-16 13:42:07 INFO  LibraryServer:88 - NAMEACCEPTED:Olga
+2015-10-16 13:42:41 INFO  LibraryServer:112 - New request to remove book from the library.
+2015-10-16 13:42:56 INFO  LibraryServer:112 - New request to remove book from the library.
+2015-10-16 13:43:02 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 13:43:03 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 13:49:01 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-16 13:49:06 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-16 13:49:37 INFO  LibraryServer:88 - NAMEACCEPTED:kjl
+2015-10-16 13:49:55 INFO  LibraryServer:88 - NAMEACCEPTED:ukgjfg
+2015-10-16 13:50:29 INFO  LibraryServer:167 - New request to edit book from the library.
+2015-10-16 13:58:15 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 13:58:18 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 14:34:32 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-16 14:34:35 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-16 14:35:11 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 14:41:07 INFO  LibraryServer:88 - NAMEACCEPTED:dfgf
+2015-10-16 14:41:13 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 14:47:19 INFO  LibraryServer:88 - NAMEACCEPTED:dfgdef
+2015-10-16 14:47:21 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 14:48:48 INFO  LibraryServer:88 - NAMEACCEPTED:dsfd
+2015-10-16 14:48:52 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 14:52:35 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-16 14:52:37 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-16 14:57:31 INFO  LibraryServer:88 - NAMEACCEPTED:dg
+2015-10-16 14:57:34 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:02:21 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-16 15:04:22 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-16 15:04:22 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:04:37 INFO  LibraryServer:88 - NAMEACCEPTED:Oleg
+2015-10-16 15:04:51 INFO  LibraryServer:88 - NAMEACCEPTED:Olga
+2015-10-16 15:05:10 INFO  LibraryServer:98 - New request to add book
+2015-10-16 15:05:21 INFO  LibraryServer:167 - New request to edit book from the library.
+2015-10-16 15:05:28 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:05:30 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:24:35 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-16 15:24:37 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-16 15:25:11 INFO  LibraryServer:88 - NAMEACCEPTED:Oleg
+2015-10-16 15:25:28 INFO  LibraryServer:88 - NAMEACCEPTED:Olga
+2015-10-16 15:25:59 INFO  LibraryServer:167 - New request to edit book from the library.
+2015-10-16 15:27:04 INFO  LibraryServer:167 - New request to edit book from the library.
+2015-10-16 15:27:49 INFO  LibraryServer:112 - New request to remove book from the library.
+2015-10-16 15:28:01 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:28:03 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:39:13 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-16 15:39:15 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-16 15:39:27 INFO  LibraryServer:88 - NAMEACCEPTED:Olga
+2015-10-16 15:39:43 INFO  LibraryServer:88 - NAMEACCEPTED:Robert
+2015-10-16 15:40:17 INFO  LibraryServer:167 - New request to edit book from the library.
+2015-10-16 15:40:36 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:42:06 INFO  LibraryServer:88 - NAMEACCEPTED:Berya
+2015-10-16 15:43:17 INFO  LibraryServer:167 - New request to edit book from the library.
+2015-10-16 15:43:56 INFO  LibraryServer:167 - New request to edit book from the library.
+2015-10-16 15:44:16 INFO  LibraryServer:112 - New request to remove book from the library.
+2015-10-16 15:44:39 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:46:02 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:46:48 INFO  LibraryServer:88 - NAMEACCEPTED:Olga
+2015-10-16 15:47:01 INFO  LibraryServer:88 - NAMEACCEPTED:Karl
+2015-10-16 15:47:10 INFO  LibraryServer:98 - New request to add book
+2015-10-16 15:47:31 INFO  LibraryServer:98 - New request to add book
+2015-10-16 15:48:02 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:48:17 INFO  LibraryServer:88 - NAMEACCEPTED:Olga
+2015-10-16 15:48:40 INFO  LibraryServer:98 - New request to add book
+2015-10-16 15:48:55 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:48:56 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:49:28 INFO  LibraryServer:88 - NAMEACCEPTED:Olka
+2015-10-16 15:49:50 INFO  LibraryServer:88 - NAMEACCEPTED:Lol
+2015-10-16 15:50:24 INFO  LibraryServer:112 - New request to remove book from the library.
+2015-10-16 15:50:51 INFO  LibraryServer:112 - New request to remove book from the library.
+2015-10-16 15:50:56 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:58:06 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:58:19 INFO  LibraryServer:88 - NAMEACCEPTED:Olka
+2015-10-16 15:58:41 INFO  LibraryServer:88 - NAMEACCEPTED:Berya
+2015-10-16 15:58:54 INFO  LibraryServer:98 - New request to add book
+2015-10-16 15:59:21 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 15:59:32 INFO  LibraryServer:88 - NAMEACCEPTED:Berya
+2015-10-16 16:00:26 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 16:00:37 INFO  LibraryServer:88 - NAMEACCEPTED:Berta
+2015-10-16 16:00:54 INFO  LibraryServer:112 - New request to remove book from the library.
+2015-10-16 16:01:04 INFO  LibraryServer:112 - New request to remove book from the library.
+2015-10-16 16:01:36 INFO  LibraryServer:98 - New request to add book
+2015-10-16 16:01:48 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 16:06:16 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 17:04:19 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-16 17:04:23 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-16 17:04:43 INFO  LibraryServer:88 - NAMEACCEPTED:Olga
+2015-10-16 17:04:53 INFO  LibraryServer:88 - NAMEACCEPTED:Karl
+2015-10-16 17:09:44 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 17:28:09 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-16 17:28:12 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-19 16:03:57 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-19 16:04:01 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-19 16:04:33 INFO  LibraryServer:88 - NAMEACCEPTED:dfgdf
+2015-10-19 16:04:40 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset
+2015-10-19 16:12:32 INFO  MainClassForServer:22 - The library server is launching...Wait...
+2015-10-19 16:12:35 INFO  MainClassForServer:46 - Library was extracted from the archive.
+2015-10-19 16:12:46 INFO  LibraryServer:88 - NAMEACCEPTED:325
+2015-10-19 16:13:05 ERROR LibraryServer:190 - Threw a IOException in LibraryServer class::Connection reset

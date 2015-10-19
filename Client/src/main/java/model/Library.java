@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-public class Library implements Serializable {
+public class Library {
     private LinkedList<Copy> books = new LinkedList<Copy>();
     private HashSet<Integer> ids = new HashSet<Integer>();
     private int length = 0;
