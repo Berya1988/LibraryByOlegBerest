@@ -6,6 +6,7 @@ package view;
 
 import controller.ClientXMLHandler;
 import controller.ConnectModelWithView;
+import model.ACTIONS;
 import org.apache.log4j.Logger;
 
 import java.awt.*;
@@ -120,7 +121,7 @@ public class Client {
             } else if (line.startsWith("EDITENABLE")) {
                     int selectedRow = ViewForm.getTable().getSelectedRow();
                     Log.info("Start edit!");
-                    AddEditViewForm form = new AddEditViewForm(2, selectedRow);
+                    AddEditViewForm form = new AddEditViewForm(ACTIONS.ADD, selectedRow);
                     form.showForm();
             } else if (line.startsWith("UPDATEEDIT")) {
                 String[] stringIds = (line.substring(10)).split("[+]");

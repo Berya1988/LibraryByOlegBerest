@@ -1,7 +1,7 @@
 package view;
 
 import controller.ClientXMLHandler;
-import controller.ConnectModelWithView;
+import model.ACTIONS;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public class AddEditViewForm extends JFrame {
     private static final long serialVersionUID = 1L;
     private Container pane;
     private GroupLayout layout;
-    private int action;                             //1 - add, 2 - edit, 3 - view
+    private ACTIONS action;                             //1 - add, 2 - edit, 3 - view
 
     private int indexOfItem;
 
@@ -45,7 +45,7 @@ public class AddEditViewForm extends JFrame {
     private Date initialDate;
     private Date currentDate;
 
-    public AddEditViewForm(int action, int index) {
+    public AddEditViewForm(ACTIONS action, int index) {
         this.action = action;
         this.indexOfItem = index;
     }
@@ -100,10 +100,10 @@ public class AddEditViewForm extends JFrame {
                 textFieldTitle, textFieldPages, textFieldYear, comboBox, okBtn, cancelBtn);
 
         switch (action) {
-            case 1:
+            case ADD:
                 setTitle("Add new book");
                 break;
-            case 2:
+            case EDIT:
                 initialDate = new Date();
                 setTitle("Edit book information");
                 textFieldId.setText(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId()));
@@ -118,7 +118,7 @@ public class AddEditViewForm extends JFrame {
                     comboBox.setSelectedIndex(1);
                 }
                 break;
-            case 3:
+            case VIEW:
                 setTitle("View book information");
                 okBtn.setVisible(false);
                 textFieldId.setText(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId()));
@@ -151,7 +151,7 @@ public class AddEditViewForm extends JFrame {
         setVisible(true);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                if(action == 2)
+                if(action.equals(ACTIONS.EDIT))
                     Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
@@ -269,17 +269,17 @@ public class AddEditViewForm extends JFrame {
                     dispose();
                     return;
                 }
-                if(action == 2)
+                if(action.equals(ACTIONS.EDIT))
                     Log.info("Id: " + Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId()));
-                if((action == 1 && ClientXMLHandler.getClientLibraryLibrary().checkId(textFieldId.getText()))
-                        ||(action == 2 && !textFieldId.getText().equals(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId())) && ClientXMLHandler.getClientLibraryLibrary().checkId(textFieldId.getText()))) {
+                if((action.equals(ACTIONS.ADD) && ClientXMLHandler.getClientLibraryLibrary().checkId(textFieldId.getText()))
+                        ||(action.equals(ACTIONS.EDIT) && !textFieldId.getText().equals(Integer.toString(ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId())) && ClientXMLHandler.getClientLibraryLibrary().checkId(textFieldId.getText()))) {
                     JOptionPane.showMessageDialog(null, "Identification number is already in use", "System message", JOptionPane.WARNING_MESSAGE);
                 }
                 else {
                     try {
-                        if (action == 1) {
+                        if (action.equals(ACTIONS.ADD)) {
                             Client.getPrintWriterOut().println("ADDBOOK" + ClientXMLHandler.createXMLRequest(answers));
-                        } else if (action == 2){
+                        } else if (action.equals(ACTIONS.EDIT)){
                             Client.getPrintWriterOut().println("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
                             Log.info("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
                         }
@@ -292,7 +292,7 @@ public class AddEditViewForm extends JFrame {
                         }
                     }
                 dispose();
-                if(action == 2)
+                if(action.equals(ACTIONS.EDIT))
                     Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
@@ -300,14 +300,14 @@ public class AddEditViewForm extends JFrame {
         cancelBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                if(action == 2)
+                if(action.equals(ACTIONS.EDIT))
                     Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
     }
 
     private int checkEditTime(){
-        if(action == 2) {
+        if(action.equals(ACTIONS.EDIT)) {
             currentDate = new Date();
             if(currentDate.getTime() - initialDate.getTime() >= 10000) {
                 dispose();

@@ -6,6 +6,7 @@ package view;
 import controller.ConnectModelWithView;
 import controller.ClientXMLHandler;
 import controller.MyCellRendererAlign;
+import model.ACTIONS;
 import model.Copy;
 import model.comparator.*;
 import org.apache.log4j.Logger;
@@ -175,7 +176,7 @@ public class ViewForm extends JFrame {
 
         addBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                AddEditViewForm form = new AddEditViewForm(1, -1);
+                AddEditViewForm form = new AddEditViewForm(ACTIONS.ADD, -1);
                 form.showForm();
             }
         });
@@ -250,7 +251,7 @@ public class ViewForm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 try {
                     int selectedRow = table.getSelectedRow();
-                    AddEditViewForm form = new AddEditViewForm(3, selectedRow);
+                    AddEditViewForm form = new AddEditViewForm(ACTIONS.VIEW, selectedRow);
                     form.showForm();
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, "You should select item", "System message", JOptionPane.WARNING_MESSAGE);
