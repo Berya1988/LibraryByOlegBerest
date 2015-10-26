@@ -10,10 +10,9 @@ import java.util.HashMap;
  */
 public class IdChecker implements Runnable {
     private static final Logger log = Logger.getLogger(IdChecker.class);
-    private Date currentTime;
     private HashMap<Integer, Date> ids;
 
-    public IdChecker(Date date, HashMap<Integer, Date> ids) {
+    public IdChecker(HashMap<Integer, Date> ids) {
         this.ids = ids;
     }
 
@@ -25,7 +24,7 @@ public class IdChecker implements Runnable {
             } catch (InterruptedException e) {
                 log.error("Threw a InterruptedException in MainClass::MyMethod:", e);
             }
-            currentTime = new Date();
+            Date currentTime = new Date();
             for(HashMap.Entry<Integer, Date> entry: ids.entrySet()) {
                 if (currentTime.getTime() - entry.getValue().getTime() >= 10000) {
                     ids.remove(entry.getKey());

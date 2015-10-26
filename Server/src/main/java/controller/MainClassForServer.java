@@ -32,33 +32,46 @@ public class MainClassForServer {
     }
 
     private static void makeChoice() throws IOException, ParserConfigurationException, SAXException, TransformerException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        int choice = 0;
-        boolean flag = true;
-        while(flag){
-            System.out.println("Select option:\n\t1 - download temp library;\n\t2 - create new empty library;\n\t3 - download existing library.");
-            choice = Integer.parseInt(bf.readLine());
-            switch(choice){
-                case 1:
-                    ServerXMLHandler.createLibraryArchive();
-                    ServerXMLHandler.addBooks();
-                    ServerXMLHandler.parseLibraryArchive();
-                    log.info("Library was extracted from the archive.");
-                    flag = !flag;
-                    break;
-                case 2:
-                    ServerXMLHandler.createLibraryArchive();
-                    ServerXMLHandler.parseLibraryArchive();
-                    log.info("New empty library was created.");
-                    flag = !flag;
-                    break;
-                case 3:
-                    ServerXMLHandler.parseLibraryArchive();
-                    log.info("New empty library was created.");
-                    flag = !flag;
-                    break;
-                default:
-                    System.out.println("Your choice was incorrect. Try again.");
+        InputStreamReader iSReader = new InputStreamReader(System.in);
+        BufferedReader bf = null;
+        try {
+            bf = new BufferedReader(iSReader);
+            int choice = 0;
+            boolean flag = true;
+            while (flag) {
+                System.out.println("Select option:\n\t1 - download temp library;\n\t2 - create new empty library;\n\t3 - download existing library.");
+                try {
+                    choice = Integer.parseInt(bf.readLine());
+                } catch (IOException e) {
+                    log.error("Threw a IOException in MainClassForServer class::" + e.getMessage());
+                }
+                switch (choice) {
+                    case 1:
+                        ServerXMLHandler.createLibraryArchive();
+                        ServerXMLHandler.addBooks();
+                        ServerXMLHandler.parseLibraryArchive();
+                        log.info("Library was extracted from the archive.");
+                        flag = !flag;
+                        break;
+                    case 2:
+                        ServerXMLHandler.createLibraryArchive();
+                        ServerXMLHandler.parseLibraryArchive();
+                        log.info("New empty library was created.");
+                        flag = !flag;
+                        break;
+                    case 3:
+                        ServerXMLHandler.parseLibraryArchive();
+                        log.info("New empty library was created.");
+                        flag = !flag;
+                        break;
+                    default:
+                        System.out.println("Your choice was incorrect. Try again.");
+                }
+            }
+        } finally {
+            iSReader.close();
+            if(bf!=null) {
+                bf.close();
             }
         }
     }

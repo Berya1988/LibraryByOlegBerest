@@ -14,7 +14,7 @@ public class ConnectModelWithView {
     private static final Logger log = Logger.getLogger(ConnectModelWithView.class);
     private DefaultTableModel model;
     private Library library;
-    private static int sizeOfList;
+    private int sizeOfList;
     private int sizeOfTable;
 
     public ConnectModelWithView(DefaultTableModel model, Library library) {
@@ -60,7 +60,7 @@ public class ConnectModelWithView {
         setConnection();
     }
 
-    public static void findWords(LinkedList<Copy> linkedList, DefaultTableModel model) {
+    public void findWords(LinkedList<Copy> linkedList, DefaultTableModel model) {
         for (int i = sizeOfList - 1; i >= 0; i--) {
             model.removeRow(i);
         }

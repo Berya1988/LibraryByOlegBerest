@@ -46,10 +46,12 @@ public class ViewForm extends JFrame {
     private ConnectModelWithView connection;
     private final String labels[] = {"Default", "By title", "By author", "By id", "By year", "By pages" };
     private final DefaultComboBoxModel modelCombo = new DefaultComboBoxModel(labels);
+    private Client client;
 
     private static boolean flagStartSort = false;
 
-    public ViewForm() {
+    public ViewForm(Client client) {
+        this.client = client;
         initializeCompoments();
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
@@ -94,7 +96,7 @@ public class ViewForm extends JFrame {
         layout.linkSize(SwingConstants.HORIZONTAL, findBtn, addBtn, editBtn, viewBtn, removeBtn, cancelBtn, labelSort, comboBox);
         layout.linkSize(SwingConstants.VERTICAL, textFieldFind, textFieldStatus, comboBox);
         pack();
-        setTitle("Library:" + Client.getNameOfClient());
+        setTitle("Library:" + client.getNameOfClient());
         setLocationRelativeTo(null);
         setSize(800, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -125,7 +127,7 @@ public class ViewForm extends JFrame {
             public void itemStateChanged(ItemEvent itemEvent) {
                 String kindOfSort = itemEvent.getItem().toString();
                 if (kindOfSort.equals("Default")) {
-                    Client.getPrintWriterOut().println("UPDATEDATABASE" + Client.getNameOfClient());
+                    client.getPrintWriterOut().println("UPDATEDATABASE" + client.getNameOfClient());
                     //connection.updateList();
                 } else if (kindOfSort.equals("By title")) {
                     Collections.sort(ClientXMLHandler.getClientLibraryLibrary().getBooks(), new CopyBookTitleComparator());
@@ -176,7 +178,7 @@ public class ViewForm extends JFrame {
 
         addBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                AddEditViewForm form = new AddEditViewForm(ACTIONS.ADD, -1);
+                AddEditViewForm form = new AddEditViewForm(ACTIONS.ADD, -1, client);
                 form.showForm();
             }
         });
@@ -185,8 +187,8 @@ public class ViewForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int index = (Integer) table.getValueAt(table.getSelectedRow(), 5);
-                    Client.getPrintWriterOut().println("EDITREQUEST" + index + "+" + Client.getNameOfClient());
-                    Log.info("EDITREQUEST" + index + "+" + Client.getNameOfClient());
+                    client.getPrintWriterOut().println("EDITREQUEST" + index + "+" + client.getNameOfClient());
+                    Log.info("EDITREQUEST" + index + "+" + client.getNameOfClient());
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, "You should select item", "System message", JOptionPane.WARNING_MESSAGE);
                     return;
@@ -207,7 +209,7 @@ public class ViewForm extends JFrame {
                     sb.append(arrIndices[i] + "+");
                 }
                 sb.append(arrIndices[arr.length - 1]);
-                Client.getPrintWriterOut().println(sb.toString());
+                client.getPrintWriterOut().println(sb.toString());
             }
         });
 
@@ -238,8 +240,8 @@ public class ViewForm extends JFrame {
                     sb.deleteCharAt(sb.length() - 1);
                     sb.deleteCharAt(sb.length() - 1);
                     textFieldStatus.setText("Find " + count + " match(es) in the next row(s): " + sb.toString());
-
-                    ConnectModelWithView.findWords(findLibrary, model);
+                    connection = new ConnectModelWithView(model, ClientXMLHandler.getClientLibraryLibrary());
+                    connection.findWords(findLibrary, model);
                 }
                 else {
                     textFieldStatus.setText("There are no matches.");
@@ -251,7 +253,7 @@ public class ViewForm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 try {
                     int selectedRow = table.getSelectedRow();
-                    AddEditViewForm form = new AddEditViewForm(ACTIONS.VIEW, selectedRow);
+                    AddEditViewForm form = new AddEditViewForm(ACTIONS.VIEW, selectedRow, client);
                     form.showForm();
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, "You should select item", "System message", JOptionPane.WARNING_MESSAGE);

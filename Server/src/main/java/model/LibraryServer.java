@@ -68,7 +68,7 @@ public class LibraryServer extends Thread {
      */
     public void run() {
         try {
-            Thread newThread = new Thread(new IdChecker(currentDate, editedIds));
+            Thread newThread = new Thread(new IdChecker(editedIds));
             newThread.start();
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);

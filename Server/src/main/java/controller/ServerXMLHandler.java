@@ -194,10 +194,11 @@ public class ServerXMLHandler {
         transformer.transform(domSource, streamResult);
     }
 
-    public static String transformXMLToString(String filename) throws IOException {
+    public static String transformXMLToString(String fileName) throws IOException {
+        FileReader fReader = new FileReader(fileName);
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(new File(filename)));
+            br = new BufferedReader(fReader);
 
             String line;
             StringBuilder sb = new StringBuilder();
@@ -207,7 +208,10 @@ public class ServerXMLHandler {
             return sb.toString();
         }
         finally {
-            br.close();
+            if(br!=null) {
+                br.close();
+            }
+            fReader.close();
         }
     }
 

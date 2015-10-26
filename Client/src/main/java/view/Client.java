@@ -31,10 +31,10 @@ import javax.swing.*;
 public class Client {
     private static final Logger Log = Logger.getLogger(Client.class);
     private BufferedReader in;
-    private static PrintWriter out;
+    private PrintWriter out;
     private JFrame frame;
     private Socket socket;
-    private static String name;
+    private String name;
     public Client() {
     }
     /**
@@ -75,7 +75,7 @@ public class Client {
                 ClientXMLHandler.parseXMLLibrary(line.substring(62));
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        ViewForm ex = new ViewForm();
+                        ViewForm ex = new ViewForm(Client.this);
                         ex.setVisible(true);
                         ViewForm.setNewStatus("Hello, " + name + "! You are welcome to the best library in the world.");
                     }
@@ -121,7 +121,7 @@ public class Client {
             } else if (line.startsWith("EDITENABLE")) {
                     int selectedRow = ViewForm.getTable().getSelectedRow();
                     Log.info("Start edit!");
-                    AddEditViewForm form = new AddEditViewForm(ACTIONS.ADD, selectedRow);
+                    AddEditViewForm form = new AddEditViewForm(ACTIONS.ADD, selectedRow, this);
                     form.showForm();
             } else if (line.startsWith("UPDATEEDIT")) {
                 String[] stringIds = (line.substring(10)).split("[+]");
@@ -140,11 +140,11 @@ public class Client {
             }
         }
     }
-    public static PrintWriter getPrintWriterOut(){
+    public PrintWriter getPrintWriterOut(){
         return out;
     }
 
-    public static String getNameOfClient(){
+    public String getNameOfClient(){
         return name;
     }
 }

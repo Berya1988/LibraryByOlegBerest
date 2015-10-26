@@ -45,12 +45,15 @@ public class AddEditViewForm extends JFrame {
     private Date initialDate;
     private Date currentDate;
 
-    public AddEditViewForm(ACTIONS action, int index) {
+    private Client client;
+
+    public AddEditViewForm(ACTIONS action, int index, Client client) {
         this.action = action;
         this.indexOfItem = index;
+        this.client = client;
     }
     public void showForm() {
-        initializeCompoments();
+        initializeComponents();
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
 
@@ -152,12 +155,12 @@ public class AddEditViewForm extends JFrame {
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 if(action.equals(ACTIONS.EDIT))
-                    Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
+                    client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
     }
 
-    private void initializeCompoments() {
+    private void initializeComponents() {
         pane = getContentPane();
         layout = new GroupLayout(pane);
         pane.setLayout(layout);
@@ -173,7 +176,7 @@ public class AddEditViewForm extends JFrame {
         textFieldId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
                 char a = e.getKeyChar();
-                if(checkEditTime()== -1) {
+                if(!checkEditTime()) {
                     return;
                 }
                 if (!Character.isDigit(a)) {
@@ -185,10 +188,7 @@ public class AddEditViewForm extends JFrame {
         textFieldAuthor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
                 e.getKeyChar();
-                if (checkEditTime() == -1) {
-                    return;
-                }
-                else {
+                if (checkEditTime()) {
                     initialDate = new Date();
                 }
             }
@@ -197,10 +197,7 @@ public class AddEditViewForm extends JFrame {
         textFieldTitle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
                 e.getKeyChar();
-                if (checkEditTime() == -1) {
-                    return;
-                }
-                else {
+                if (checkEditTime()) {
                     initialDate = new Date();
                 }
             }
@@ -209,10 +206,7 @@ public class AddEditViewForm extends JFrame {
         textFieldPages.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
                 e.getKeyChar();
-                if (checkEditTime() == -1) {
-                    return;
-                }
-                else {
+                if (checkEditTime()) {
                     initialDate = new Date();
                 }
             }
@@ -220,10 +214,7 @@ public class AddEditViewForm extends JFrame {
         textFieldPages.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
                 char a = e.getKeyChar();
-                if(checkEditTime()== -1) {
-                    return;
-                }
-                else {
+                if(checkEditTime()) {
                     initialDate = new Date();
                 }
                 if (!Character.isDigit(a)) {
@@ -235,10 +226,7 @@ public class AddEditViewForm extends JFrame {
         textFieldYear.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent e) {
                 char a = e.getKeyChar();
-                if(checkEditTime()== -1) {
-                    return;
-                }
-                else {
+                if(checkEditTime()) {
                     initialDate = new Date();
                 }
                 if (!Character.isDigit(a)) {
@@ -256,7 +244,7 @@ public class AddEditViewForm extends JFrame {
 
         okBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(checkEditTime()== -1) {
+                if(!checkEditTime()) {
                     return;
                 }
 
@@ -278,9 +266,9 @@ public class AddEditViewForm extends JFrame {
                 else {
                     try {
                         if (action.equals(ACTIONS.ADD)) {
-                            Client.getPrintWriterOut().println("ADDBOOK" + ClientXMLHandler.createXMLRequest(answers));
+                            client.getPrintWriterOut().println("ADDBOOK" + ClientXMLHandler.createXMLRequest(answers));
                         } else if (action.equals(ACTIONS.EDIT)){
-                            Client.getPrintWriterOut().println("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
+                            client.getPrintWriterOut().println("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
                             Log.info("EDITBOOK" + ClientXMLHandler.getIdOfCopyByIndexOfList(indexOfItem) + "+" + ClientXMLHandler.createXMLRequest(answers));
                         }
                     } catch (ParserConfigurationException e1) {
@@ -293,7 +281,7 @@ public class AddEditViewForm extends JFrame {
                     }
                 dispose();
                 if(action.equals(ACTIONS.EDIT))
-                    Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
+                    client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
 
@@ -301,20 +289,20 @@ public class AddEditViewForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 if(action.equals(ACTIONS.EDIT))
-                    Client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
+                    client.getPrintWriterOut().println("EDITFINISH" + ClientXMLHandler.getClientLibraryLibrary().getElement(indexOfItem).getId());
             }
         });
     }
 
-    private int checkEditTime(){
+    private Boolean checkEditTime(){
         if(action.equals(ACTIONS.EDIT)) {
             currentDate = new Date();
             if(currentDate.getTime() - initialDate.getTime() >= 10000) {
                 dispose();
                 JOptionPane.showMessageDialog(null, "You was disconnected by timeout. Try again", "System message", JOptionPane.WARNING_MESSAGE);
-                return -1;
+                return false;
             }
         }
-        return 1;
+        return true;
     }
 }
